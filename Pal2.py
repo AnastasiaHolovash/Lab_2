@@ -15,7 +15,7 @@ class Lab2:
         self.slave.wm_geometry("+600+250")
         Label(self.slave, text='Бровченко Анастасія\n'
                                'група ІО-64\n'
-                               'варіант {}'.format((n+g % 60) % 30+1),
+                               'варіант {}'.format((n + g % 60) % 30 + 1),
               justify=LEFT, font="Arial 17 bold").pack(fill='both')
 
     def mainwindow(self):
@@ -79,7 +79,8 @@ class Lab2:
             self.show.minsize(300, 100)
             self.f = open('МножиниАВ.txt', 'rb')
             Label(self.show, text='A={}\n'
-                                  'B={}'.format(pickle.load(self.f), pickle.load(self.f)), font='Arial 14', justify=LEFT)\
+                                  'B={}'.format(pickle.load(self.f), pickle.load(self.f)), font='Arial 14',
+                  justify=LEFT) \
                 .pack(fill=BOTH)
             self.f.close()
 
@@ -120,13 +121,13 @@ class Lab2:
         listbox2.configure(yscrollcommand=scr2.set)
         scr2.grid(row=3, column=3, sticky=W, ipady=90)
 
-        Button(self.slave2, text='Очистити множини', font='Arial 12', command=clean_lists)\
+        Button(self.slave2, text='Очистити множини', font='Arial 12', command=clean_lists) \
             .grid(row=4, column=0, columnspan=2)
 
         but = Button(self.slave2, text='Зберегти в файл', font='Arial 12', command=save_to_file)
         but.grid(row=4, column=2, columnspan=2)
 
-        Button(self.slave2, text='Показати з файлу', font='Arial 12', command=show_from_file)\
+        Button(self.slave2, text='Показати з файлу', font='Arial 12', command=show_from_file) \
             .grid(row=5, column=2, columnspan=2)
 
         lf3 = LabelFrame(self.slave2, text='Задані множини', font='Arial 12', )
@@ -134,7 +135,8 @@ class Lab2:
         lb = Label(lf3, text='A = {}\n'
                              'B = {}\n'.format(self.A, self.B), font='Arial 14', justify=LEFT)
         lb.grid(row=6, column=0, columnspan=5, sticky=W)
-        A=self.A ; B=self.B
+        A = self.A;
+        B = self.B
 
     def window3(self):
         self.slave3 = Toplevel(self.root)
@@ -204,13 +206,13 @@ class Lab2:
         dict_SB = {}
         canvS.create_text(160, 30, text='Множина aSb, якщо a чоловік b', font='Arial 16')
         for i in range(len(self.A)):
-            canvS.create_text(30+i*50, 50, text=list(self.A)[i], font='Arial 10')
-            canvS.create_oval([20+i*50, 60], [40+i*50, 80], fill="green")
-            dict_SA.update({list(self.A)[i]: [30+i*50, 80]})
+            canvS.create_text(30 + i * 50, 50, text=list(self.A)[i], font='Arial 10')
+            canvS.create_oval([20 + i * 50, 60], [40 + i * 50, 80], fill="green")
+            dict_SA.update({list(self.A)[i]: [30 + i * 50, 80]})
         for j in range(len(self.B)):
-            canvS.create_text(30+j*50, 190, text=list(self.B)[j], font='Arial 10')
-            canvS.create_oval([20+j*50, 160], [40+j*50, 180], fill="blue")
-            dict_SB.update({list(self.B)[j]: [30+j*50, 160]})
+            canvS.create_text(30 + j * 50, 190, text=list(self.B)[j], font='Arial 10')
+            canvS.create_oval([20 + j * 50, 160], [40 + j * 50, 180], fill="blue")
+            dict_SB.update({list(self.B)[j]: [30 + j * 50, 160]})
         for k in self.S:
             canvS.create_line(dict_SA[k[0]], dict_SB[k[1]], arrow=LAST)
         canvS.grid(row=2, column=0, columnspan=3)
@@ -220,13 +222,13 @@ class Lab2:
         dict_RB = {}
         canvR.create_text(160, 30, text='Множина aRb, якщо a онук b', font='Arial 16')
         for i in range(len(self.A)):
-            canvR.create_text(30+i*50, 50, text=list(self.A)[i], font='Arial 10')
-            canvR.create_oval([20+i*50, 60], [40+i*50, 80], fill="green")
-            dict_RA.update({list(self.A)[i]: [30+i*50, 80]})
+            canvR.create_text(30 + i * 50, 50, text=list(self.A)[i], font='Arial 10')
+            canvR.create_oval([20 + i * 50, 60], [40 + i * 50, 80], fill="green")
+            dict_RA.update({list(self.A)[i]: [30 + i * 50, 80]})
         for j in range(len(self.B)):
-            canvR.create_text(30+j*50, 190, text=list(self.B)[j], font='Arial 10')
-            canvR.create_oval([20+j*50, 160], [40+j*50, 180], fill="blue")
-            dict_RB.update({list(self.B)[j]: [30+j*50, 160]})
+            canvR.create_text(30 + j * 50, 190, text=list(self.B)[j], font='Arial 10')
+            canvR.create_oval([20 + j * 50, 160], [40 + j * 50, 180], fill="blue")
+            dict_RB.update({list(self.B)[j]: [30 + j * 50, 160]})
         for k in self.R:
             canvR.create_line(dict_RA[k[0]], dict_RB[k[1]], arrow=LAST)
         canvR.grid(row=3, column=0, columnspan=3)
@@ -243,15 +245,15 @@ class Lab2:
             canv.create_text(150, 20, text='R \u222A S', font='Arial 16')
             dict_b1 = {}
             dict_b2 = {}
-            V = self.R+self.S
+            V = self.R + self.S
             for i in range(len(self.A)):
-                canv.create_text(30+i*50, 50, text=list(self.A)[i], font='Arial 10')
-                canv.create_oval([20+i*50, 60], [40+i*50, 80], fill="green")
-                dict_b1.update({list(self.A)[i]: [30+i*50, 80]})
+                canv.create_text(30 + i * 50, 50, text=list(self.A)[i], font='Arial 10')
+                canv.create_oval([20 + i * 50, 60], [40 + i * 50, 80], fill="green")
+                dict_b1.update({list(self.A)[i]: [30 + i * 50, 80]})
             for j in range(len(self.B)):
-                canv.create_text(30+j*50, 190, text=list(self.B)[j], font='Arial 10')
-                canv.create_oval([20+j*50, 160], [40+j*50, 180], fill="blue")
-                dict_b2.update({list(self.B)[j]: [30+j*50, 160]})
+                canv.create_text(30 + j * 50, 190, text=list(self.B)[j], font='Arial 10')
+                canv.create_oval([20 + j * 50, 160], [40 + j * 50, 180], fill="blue")
+                dict_b2.update({list(self.B)[j]: [30 + j * 50, 160]})
             for k in V:
                 canv.create_line(dict_b1[k[0]], dict_b2[k[1]], arrow=LAST)
 
@@ -266,13 +268,13 @@ class Lab2:
                     V.append(i)
 
             for i in range(len(self.A)):
-                canv.create_text(30+i*50, 50, text=list(self.A)[i], font='Arial 10')
-                canv.create_oval([20+i*50, 60], [40+i*50, 80], fill="green")
-                dict_b1.update({list(self.A)[i]: [30+i*50, 80]})
+                canv.create_text(30 + i * 50, 50, text=list(self.A)[i], font='Arial 10')
+                canv.create_oval([20 + i * 50, 60], [40 + i * 50, 80], fill="green")
+                dict_b1.update({list(self.A)[i]: [30 + i * 50, 80]})
             for j in range(len(self.B)):
-                canv.create_text(30+j*50, 190, text=list(self.B)[j], font='Arial 10')
-                canv.create_oval([20+j*50, 160], [40+j*50, 180], fill="blue")
-                dict_b2.update({list(self.B)[j]: [30+j*50, 160]})
+                canv.create_text(30 + j * 50, 190, text=list(self.B)[j], font='Arial 10')
+                canv.create_oval([20 + j * 50, 160], [40 + j * 50, 180], fill="blue")
+                dict_b2.update({list(self.B)[j]: [30 + j * 50, 160]})
 
             for k in V:
                 if len(V) != 0:
@@ -289,13 +291,13 @@ class Lab2:
                     V.remove(i)
 
             for i in range(len(self.A)):
-                canv.create_text(30+i*50, 50, text=list(self.A)[i], font='Arial 10')
-                canv.create_oval([20+i*50, 60], [40+i*50, 80], fill="green")
-                dict_b1.update({list(self.A)[i]: [30+i*50, 80]})
+                canv.create_text(30 + i * 50, 50, text=list(self.A)[i], font='Arial 10')
+                canv.create_oval([20 + i * 50, 60], [40 + i * 50, 80], fill="green")
+                dict_b1.update({list(self.A)[i]: [30 + i * 50, 80]})
             for j in range(len(self.B)):
-                canv.create_text(30+j*50, 190, text=list(self.B)[j], font='Arial 10')
-                canv.create_oval([20+j*50, 160], [40+j*50, 180], fill="blue")
-                dict_b2.update({list(self.B)[j]: [30+j*50, 160]})
+                canv.create_text(30 + j * 50, 190, text=list(self.B)[j], font='Arial 10')
+                canv.create_oval([20 + j * 50, 160], [40 + j * 50, 180], fill="blue")
+                dict_b2.update({list(self.B)[j]: [30 + j * 50, 160]})
             for k in V:
                 canv.create_line(dict_b1[k[0]], dict_b2[k[1]], arrow=LAST)
 
@@ -313,20 +315,20 @@ class Lab2:
             b = copy.deepcopy(self.B)
             for i in a:
                 for j in b:
-                    V.append([i,j])
+                    V.append([i, j])
 
             for i in V:
                 if i in self.R:
                     V.remove(i)
 
             for i in range(len(self.A)):
-                canv.create_text(30+i*50, 50, text=list(self.A)[i], font='Arial 10')
-                canv.create_oval([20+i*50, 60], [40+i*50, 80], fill="green")
-                dict_b1.update({list(self.A)[i]: [30+i*50, 80]})
+                canv.create_text(30 + i * 50, 50, text=list(self.A)[i], font='Arial 10')
+                canv.create_oval([20 + i * 50, 60], [40 + i * 50, 80], fill="green")
+                dict_b1.update({list(self.A)[i]: [30 + i * 50, 80]})
             for j in range(len(self.B)):
-                canv.create_text(30+j*50, 190, text=list(self.B)[j], font='Arial 10')
-                canv.create_oval([20+j*50, 160], [40+j*50, 180], fill="blue")
-                dict_b2.update({list(self.B)[j]: [30+j*50, 160]})
+                canv.create_text(30 + j * 50, 190, text=list(self.B)[j], font='Arial 10')
+                canv.create_oval([20 + j * 50, 160], [40 + j * 50, 180], fill="blue")
+                dict_b2.update({list(self.B)[j]: [30 + j * 50, 160]})
             for k in V:
                 if len(V) != 0:
                     canv.create_line(dict_b1[k[0]], dict_b2[k[1]], arrow=LAST)
@@ -340,32 +342,33 @@ class Lab2:
             for i in V:
                 i[0], i[1] = i[1], i[0]
             for i in range(len(self.A)):
-                canv.create_text(30+i*50, 50, text=list(self.A)[i], font='Arial 10')
-                canv.create_oval([20+i*50, 60], [40+i*50, 80], fill="green")
-                dict_b1.update({list(self.A)[i]: [30+i*50, 80]})
+                canv.create_text(30 + i * 50, 50, text=list(self.A)[i], font='Arial 10')
+                canv.create_oval([20 + i * 50, 60], [40 + i * 50, 80], fill="green")
+                dict_b1.update({list(self.A)[i]: [30 + i * 50, 80]})
             for j in range(len(self.B)):
-                canv.create_text(30+j*50, 190, text=list(self.B)[j], font='Arial 10')
-                canv.create_oval([20+j*50, 160], [40+j*50, 180], fill="blue")
-                dict_b2.update({list(self.B)[j]: [30+j*50, 160]})
+                canv.create_text(30 + j * 50, 190, text=list(self.B)[j], font='Arial 10')
+                canv.create_oval([20 + j * 50, 160], [40 + j * 50, 180], fill="blue")
+                dict_b2.update({list(self.B)[j]: [30 + j * 50, 160]})
             for k in V:
                 canv.create_line(dict_b2[k[0]], dict_b1[k[1]], arrow=LAST)
 
         Label(self.slave4, text='   ').grid(row=0, column=0)
         Label(self.slave4, text='Операції над відношеннями', font='Arial 16').grid(row=0, column=2, columnspan=2)
-        Button(self.slave4, text='R \u222A S', font='Arial 12', command=but1)\
+        Button(self.slave4, text='R \u222A S', font='Arial 12', command=but1) \
             .grid(row=1, column=1, sticky=W)
-        Button(self.slave4, text='R \u2229 S', font='Arial 12', command=but2)\
+        Button(self.slave4, text='R \u2229 S', font='Arial 12', command=but2) \
             .grid(row=2, column=1, sticky=W)
-        Button(self.slave4, text='R \ S', font='Arial 12', command=but3)\
+        Button(self.slave4, text='R \ S', font='Arial 12', command=but3) \
             .grid(row=3, column=1, sticky=W)
-        Button(self.slave4, text='U \ R', font='Arial 12', command=but4)\
+        Button(self.slave4, text='U \ R', font='Arial 12', command=but4) \
             .grid(row=4, column=1, sticky=W)
-        Button(self.slave4, text='S⁻¹', font='Arial 12', command=but5)\
+        Button(self.slave4, text='S⁻¹', font='Arial 12', command=but5) \
             .grid(row=5, column=1, sticky=W)
         Label(self.slave4, text='   ').grid(row=0, column=2)
 
         canv = Canvas(self.slave4, width=600, height=250)
         canv.grid(row=1, column=3, rowspan=6)
+
 
 Nastya = Lab2()
 Nastya.mainwindow()

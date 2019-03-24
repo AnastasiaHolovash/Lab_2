@@ -66,18 +66,18 @@ def unionn(s, r):
 
 
 print(unionn(S, R))
-#print(S)
-#print(R)
+
+
+# print(S)
+# print(R)
 
 def intersectionn(s, r):
     I = []
     for i in s:
-        #print(i if i in s else "0")
+        # print(i if i in s else "0")
         if i in r:
             I.append(i)
     return I
 
 
 print(intersectionn(S, R))
-
-

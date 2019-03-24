@@ -1,14 +1,15 @@
 from tkinter import *
 from random import randint, sample
 import networkx as nx
-#import pylab as plt
+
+
+# import pylab as plt
 
 class Main:
     A = set()
     B = set()
     R = list()
     S = list()
-
 
     def __init__(self):
         menubar = Menu(root)
@@ -60,13 +61,13 @@ class Main:
         def save_a():
             with open(r"F:\Dima\дискретна математика\Lab_2\saved_a.txt", "w") as w:
                 for i in self.A:
-                    w.write(str(i)+"\n")
+                    w.write(str(i) + "\n")
             print(self.A)
 
         def save_b():
             with open(r"F:\Dima\дискретна математика\Lab_2\saved_b.txt", "w") as w:
                 for i in self.B:
-                    w.write(str(i)+"\n")
+                    w.write(str(i) + "\n")
             print(self.B)
 
         def read_a():
@@ -91,7 +92,8 @@ class Main:
         l_w = Label(self.win2, text="Список жіночих імен")
         l_w.grid(row=0, column=0)
         list_of_women = Listbox(self.win2, font=("Arial", 16), selectmode=EXTENDED)
-        self.list_of_women_text = ["Aurora", "Anastasia", "Valeria", "Gertrude", "Eva", "Kira", "Lolita", "Olga", "Flora", "Julia"]
+        self.list_of_women_text = ["Aurora", "Anastasia", "Valeria", "Gertrude", "Eva", "Kira", "Lolita", "Olga",
+                                   "Flora", "Julia"]
         for i in self.list_of_women_text:
             list_of_women.insert(END, str(i))
         list_of_women.grid(row=1, column=0)
@@ -107,7 +109,8 @@ class Main:
         l_m = Label(self.win2, text="Список чоловічих імен")
         l_m.grid(row=0, column=1)
         list_of_men = Listbox(self.win2, font=("Arial", 16), selectmode=EXTENDED)
-        self.list_of_men_text = ["Adam", "Anatoly", "Vissarion", "Harry", "Dmitri", "Ivan", "Leo", "Mikhail", "Ostap", "Yuri"]
+        self.list_of_men_text = ["Adam", "Anatoly", "Vissarion", "Harry", "Dmitri", "Ivan", "Leo", "Mikhail", "Ostap",
+                                 "Yuri"]
         for i in self.list_of_men_text:
             list_of_men.insert(END, str(i))
         list_of_men.grid(row=1, column=1)
@@ -179,7 +182,8 @@ class Main:
             g.add_edges_from(self.R, color='r')
             edges = g.edges()
             colors = [g[u][v]['color'] for u, v in edges]
-            nx.draw_networkx(g, pos=nx.spring_layout(g), arrows=True, with_labels=True, edges=g.edges(), edge_color=colors)
+            nx.draw_networkx(g, pos=nx.spring_layout(g), arrows=True, with_labels=True, edges=g.edges(),
+                             edge_color=colors)
             plt.show()
 
         def crossing():
@@ -211,7 +215,7 @@ class Main:
             for i in self.A:
                 for j in self.B:
                     if [i, j] not in self.R:
-                        c.append([i,j])
+                        c.append([i, j])
             g = nx.DiGraph()
             g.add_nodes_from(list(self.A | self.B))
             g.add_edges_from(c)
@@ -256,33 +260,34 @@ class Main:
     def calc_variant(self):
         N = int(self.e1.get())
         G = int(self.e2.get())
-        Z = int((N+G % 60) % 30+1)
+        Z = int((N + G % 60) % 30 + 1)
         self.t1.delete(1.0, END)
         self.t1.insert(INSERT, Z)
 
     def relations_S(self):
-            edges_list_S = list([])
-            for a in sample(self.A, randint(len(self.A)//2, len(self.A))):
-                for b in sample(self.B, randint(len(self.A)//2, len(self.B))):
-                    if a in self.list_of_women_text and b in self.list_of_men_text:
-                        s = True
-                        for i in edges_list_S:
-                            if a in i or b in i:
-                                s = False
-                        if s:
-                            edges_list_S.append([a, b])
-            self.S = edges_list_S
-            self.g1 = nx.DiGraph()
-            self.g1.add_nodes_from(list(self.A | self.B))
-            self.g1.add_edges_from(edges_list_S)
-            nx.draw_networkx(self.g1, pos=nx.spring_layout(self.g1), arrows=True, with_labels=True, edges=self.g1.edges(), edge_color="b")
-            plt.show()
+        edges_list_S = list([])
+        for a in sample(self.A, randint(len(self.A) // 2, len(self.A))):
+            for b in sample(self.B, randint(len(self.A) // 2, len(self.B))):
+                if a in self.list_of_women_text and b in self.list_of_men_text:
+                    s = True
+                    for i in edges_list_S:
+                        if a in i or b in i:
+                            s = False
+                    if s:
+                        edges_list_S.append([a, b])
+        self.S = edges_list_S
+        self.g1 = nx.DiGraph()
+        self.g1.add_nodes_from(list(self.A | self.B))
+        self.g1.add_edges_from(edges_list_S)
+        nx.draw_networkx(self.g1, pos=nx.spring_layout(self.g1), arrows=True, with_labels=True, edges=self.g1.edges(),
+                         edge_color="b")
+        plt.show()
 
     def relations_R(self):
         edges_list_S = self.S
         edges_list_R = list()
-        for a in sample(self.A, randint(len(self.A)//4, len(self.A)//2)):
-            for b in sample(self.B, randint(len(self.A)//5, len(self.B)//2)):
+        for a in sample(self.A, randint(len(self.A) // 4, len(self.A) // 2)):
+            for b in sample(self.B, randint(len(self.A) // 5, len(self.B) // 2)):
                 if a in self.list_of_women_text:
                     for i in edges_list_S:
                         if b in i and [a, b] not in edges_list_S:
@@ -292,7 +297,8 @@ class Main:
         self.g2 = nx.DiGraph()
         self.g2.add_nodes_from(list(self.A | self.B))
         self.g2.add_edges_from(edges_list_R)
-        nx.draw_networkx(self.g2, pos=nx.spring_layout(self.g2), arrows=True, with_labels=True, edges=self.g2.edges(), edge_color="r")
+        nx.draw_networkx(self.g2, pos=nx.spring_layout(self.g2), arrows=True, with_labels=True, edges=self.g2.edges(),
+                         edge_color="r")
         plt.show()
 
     def update_S(self):
