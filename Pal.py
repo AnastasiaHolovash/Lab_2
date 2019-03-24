@@ -5,6 +5,7 @@ import networkx as nx
 
 # import pylab as plt
 
+
 class Main:
     A = set()
     B = set()

@@ -2,6 +2,7 @@ from tkinter import *
 import pickle, random, copy
 
 
+
 class Lab2:
     A = set()
     B = set()
