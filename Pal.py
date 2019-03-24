@@ -9,6 +9,7 @@ class Main:
     R = list()
     S = list()
 
+
     def __init__(self):
         menubar = Menu(root)
         filemenu = Menu(menubar, tearoff=0)
