@@ -1,10 +1,10 @@
 import random
 
-A = ['Андрій', 'Антон', 'Денис', 'Аня', 'Катя', 'Юля']
+A = ['Andrew', 'Антон', 'Денис', 'Аня', 'Катя', 'Юля']
 B = ['Богдан', 'Віталій', 'Юля', 'Даша', 'Оля']
 S1 = {("Петро", "Ольга"), ("Іван", "Тетяна"), ("Олег", "Оксана")}
 
-mens = ['Андрій', 'Антон', 'Денис', 'Богдан', 'Віталій', 'Віктор', 'Костя', 'Сергій', 'Вова']
+mens = ['Andrew', 'Антон', 'Денис', 'Богдан', 'Віталій', 'Віктор', 'Костя', 'Сергій', 'Вова']
 women = ['Настя', 'Маша', 'Аня', 'Катя', 'Юля', 'Даша', 'Оля', 'Люда']
 
 
@@ -41,12 +41,30 @@ def a_father_in_law_b():
     for i in range(min(len(mensetA), len(mensetB))):
         m1 = random.choice(list(mensetA))
         m2 = random.choice(list(mensetB))
-        R.append([m1, m2])
+        if m1 != m2:
+            R.append([m1, m2])
         mensetA.remove(m1)
         mensetB.remove(m2)
     return R
 
+def a_universal_father_in_law_b():
+    mensetA = set()
+    for i in A:
+        if i in mens:
+            mensetA.add(i)
+    mensetB = set()
+    for i in B:
+        if i in mens:
+            mensetB.add(i)
+    #Ur=list(map(lambda x: x * , mile_distances))
+    Ur = []
+    for m1 in mensetA:
+        for m2 in mensetB:
+            if m1 != m2:
+                Ur.append([m1, m2])
+    return Ur
 
+print("Ur > ",a_universal_father_in_law_b())
 # print(a_husbend_b())
 # print(a_father_in_law_b())
 
@@ -66,7 +84,7 @@ def unionn(s, r):
     return U
 
 
-print(unionn(S, R))
+print(unionn(R, S))
 
 
 # print(S)
@@ -81,4 +99,27 @@ def intersectionn(s, r):
     return I
 
 
-print(intersectionn(S, R))
+print(intersectionn(R, S))
+
+
+def differ(r, s):
+    D = []
+    for i in r:
+        if i not in s:
+            D.append(i)
+    return D
+
+
+print(differ(R, S))
+
+
+def transposed(s):
+    T = []
+    for i in range(len(s)):
+        T.append([s[i][1], s[i][0]])
+    return T
+
+
+print(transposed(S))
+
+
