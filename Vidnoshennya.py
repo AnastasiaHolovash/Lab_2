@@ -8,7 +8,6 @@ mens = ['Andrew', 'Антон', 'Денис', 'Богдан', 'Віталій', 
 women = ['Настя', 'Маша', 'Аня', 'Катя', 'Юля', 'Даша', 'Оля', 'Люда']
 
 
-
 def a_husbend_b():
     menset = set()
     for i in A:
@@ -47,6 +46,7 @@ def a_father_in_law_b():
         mensetB.remove(m2)
     return R
 
+
 def a_universal_father_in_law_b():
     mensetA = set()
     for i in A:
@@ -56,7 +56,7 @@ def a_universal_father_in_law_b():
     for i in B:
         if i in mens:
             mensetB.add(i)
-    #Ur=list(map(lambda x: x * , mile_distances))
+    # Ur=list(map(lambda x: x * , mile_distances))
     Ur = []
     for m1 in mensetA:
         for m2 in mensetB:
@@ -64,7 +64,8 @@ def a_universal_father_in_law_b():
                 Ur.append([m1, m2])
     return Ur
 
-print("Ur > ",a_universal_father_in_law_b())
+
+print("Ur > ", a_universal_father_in_law_b())
 # print(a_husbend_b())
 # print(a_father_in_law_b())
 
@@ -121,5 +122,3 @@ def transposed(s):
 
 
 print(transposed(S))
-
-

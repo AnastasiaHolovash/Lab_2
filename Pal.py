@@ -1,7 +1,8 @@
 from tkinter import *
 from random import randint, sample
 import networkx as nx
-
+# from window2 import window2 as w2
+import window2 as w2
 
 # import pylab as plt
 
@@ -15,12 +16,12 @@ class Main:
     def __init__(self):
         menubar = Menu(root)
         filemenu = Menu(menubar, tearoff=0)
-        filemenu.add_command(label="2 вікно", command=self.window2)
+        filemenu.add_command(label="2 вікно", command=w2)
         filemenu.add_command(label="3 вікно", command=self.window3)
         filemenu.add_command(label="4 вікно", command=self.window4)
         menubar.add_cascade(label="Вікнa", menu=filemenu)
 
-        l1 = Label(root, text="Моя група: ІО -", font=("Arial", 20))
+        l1 = Label(root, text="Моя група: ІВ -", font=("Arial", 20))
         l1.grid(row=0, sticky=W)
         l2 = Label(root, text="Мій номер у групі:", font=("Arial", 20))
         l2.grid(row=1, sticky=W)
@@ -38,6 +39,7 @@ class Main:
 
         root.config(menu=menubar)
 
+    # w2.window2(self=Main)
     def window2(self):
         self.win2 = Toplevel(root)
         self.win2.title("2 вікно")
