@@ -8,6 +8,7 @@ mens = ['Andrew', 'Антон', 'Денис', 'Богдан', 'Віталій', 
 women = ['Настя', 'Маша', 'Аня', 'Катя', 'Юля', 'Даша', 'Оля', 'Люда']
 
 
+
 def a_husbend_b():
     menset = set()
     for i in A:
@@ -65,10 +66,11 @@ def a_universal_father_in_law_b():
     return Ur
 
 
-print("Ur > ", a_universal_father_in_law_b())
 # print(a_husbend_b())
 # print(a_father_in_law_b())
 
+Ur = list(a_universal_father_in_law_b())
+print("Ur > ", a_universal_father_in_law_b())
 S = list(a_husbend_b())
 print(S)
 R = list(a_father_in_law_b())
@@ -122,3 +124,4 @@ def transposed(s):
 
 
 print(transposed(S))
+print(differ(Ur, R))
